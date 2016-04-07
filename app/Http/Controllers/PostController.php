@@ -31,7 +31,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $posts = $this->post->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $posts = Auth::user()->posts();
 
         return view('posts.index', ['posts' => $posts]);
     }

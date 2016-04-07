@@ -69,7 +69,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $post = $this->post->find($id);
+        $post = $this->post->findOrFail($id);
         if($post->user_id == Auth::user()->id)  return view('posts.show', ['post' => $post]);
 
         return redirect(route('posts.index'));
@@ -82,7 +82,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $post = $this->post->find($id);
+        $post = $this->post->findOrFail($id);
         $post->entry = Crypt::decrypt($post->entry);
         if($post->user_id == Auth::user()->id) return view('posts.createPost', ['post' => $post]);
         return redirect(route('posts.index'));
@@ -96,7 +96,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $post = $this->post->find($id);
+        $post = $this->post->findOrFail($id);
         if($post->user_id != Auth::user()->id) return redirect(route('posts.index'));
         $post->entry = Crypt::encrypt($request->entry);
         $post->save();

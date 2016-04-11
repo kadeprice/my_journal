@@ -157,6 +157,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+        Unisharp\Ckeditor\ServiceProvider::class,
+
     ],
 
     /*

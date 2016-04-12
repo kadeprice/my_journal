@@ -55,6 +55,7 @@ class PostController extends Controller {
         $this->post->create([
             'entry'   => Crypt::encrypt($request->entry),
             'user_id' => Auth::user()->id,
+            'created_at' => $request->created_at,
 
         ]);
 
@@ -99,6 +100,7 @@ class PostController extends Controller {
         $post = $this->post->findOrFail($id);
         if($post->user_id != Auth::user()->id) return redirect(route('posts.index'));
         $post->entry = Crypt::encrypt($request->entry);
+        $post->created_at = $request->created_at;
         $post->save();
 
         return  redirect(route('posts.index'));

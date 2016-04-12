@@ -14,6 +14,13 @@
                         @else
                             {!! Form::open(['route' => 'posts.store']) !!}
                         @endif
+                        <div class="form-group">
+                            <div class="form-group">
+                                {!! Form::label('created_at', 'Date') !!}
+                                {!! Form::date('created_at', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+                            </div>
+
+                        </div>
 
                         <div class="form-group">
                             {!! Form::textarea('entry', null, ['cols' => '100', 'rows' => '30', 'class' => 'entry']) !!}

@@ -10,7 +10,7 @@
                     @foreach($posts as $post)
                         <tr>
                             <td>{{ $post->created_at->format('m/d/Y') }}</td>
-                            <td><a href="{{ route('posts.show', $post->id) }}">{!!  \Illuminate\Support\Str::limit(\Illuminate\Support\Facades\Crypt::decrypt($post->entry),200) !!} </a></td>
+                            <td><a href="{{ route('posts.show', $post->id) }}">{!!  nl2br(\Illuminate\Support\Str::limit(\Illuminate\Support\Facades\Crypt::decrypt($post->entry),200)) !!} </a></td>
 
                         </tr>
                     @endforeach

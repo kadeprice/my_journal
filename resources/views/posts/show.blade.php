@@ -15,7 +15,7 @@
                     </div>
                     <div class="panel-body">
 
-                        {!!  nl2br(\Illuminate\Support\Facades\Crypt::decrypt($post->entry)) !!} </a>
+                        {!!  \Illuminate\Support\Facades\Crypt::decrypt($post->entry) !!} </a>
 
                     </div>
                 </div>
